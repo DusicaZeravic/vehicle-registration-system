@@ -5,9 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:vehicle-registration-system": "node dist/vehicle-registration-system/server/server.mjs"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
