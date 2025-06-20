@@ -9,6 +9,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
@@ -46,21 +47,11 @@ export class LoginComponent {
 
     this.authService.login(data).subscribe({
       next: (res) => {
-        this.router.navigate(['/']);
+        this.router.navigate(['/vehicle/list']);
       },
       error: (err) => alert('Login failed')
     });
   }
-
-  // getAllClients(): void {
-  //   this.authService.getAllClients().subscribe({
-  //     next: (res) => {
-  //       console.log('Login successful', res);
-  //       // this.router.navigate(['/']);
-  //     },
-  //     error: (err) => alert('Login failed')
-  //   })
-  // }
 
   get login(): any {
     return this.loginForm.controls;

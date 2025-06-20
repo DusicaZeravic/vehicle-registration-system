@@ -1,0 +1,56 @@
+<div style="display: flex; justify-content: center; margin: 40px 0">
+  <mat-card class="card">
+    <mat-card-header class="card-header">
+      <mat-card-title>Lista vozila</mat-card-title>
+      <button
+        mat-flat-button
+        matButton="filled"
+        routerLink="/vehicle/add"
+        style="margin-left: auto"
+      >
+        <mat-icon aria-hidden="false" fontIcon="add">add</mat-icon>
+        Dodaj vozilo
+      </button>
+    </mat-card-header>
+    <mat-card-content class="card-body">
+      <div class="table-wrapper">
+        <table mat-table [dataSource]="vehicles" class="mat-elevation-z8 table">
+          <ng-container matColumnDef="registarskaOznaka">
+            <th mat-header-cell *matHeaderCellDef>Registarska oznaka</th>
+            <td mat-cell *matCellDef="let vehicle">
+              {{ vehicle.registarskaOznaka }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="marka">
+            <th mat-header-cell *matHeaderCellDef>Marka</th>
+            <td mat-cell *matCellDef="let vehicle">{{ vehicle.marka }}</td>
+          </ng-container>
+          <ng-container matColumnDef="model">
+            <th mat-header-cell *matHeaderCellDef>Model</th>
+            <td mat-cell *matCellDef="let vehicle">{{ vehicle.model }}</td>
+          </ng-container>
+          <ng-container matColumnDef="godinaProizvodnje">
+            <th mat-header-cell *matHeaderCellDef>Godina</th>
+            <td mat-cell *matCellDef="let vehicle">
+              {{ vehicle.godinaProizvodnje }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="vrstaGoriva">
+            <th mat-header-cell *matHeaderCellDef>Gorivo</th>
+            <td mat-cell *matCellDef="let vehicle">
+              {{ vehicle.vrstaGoriva }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="datumRegistracije">
+            <th mat-header-cell *matHeaderCellDef>Datum registracije</th>
+            <td mat-cell *matCellDef="let vehicle">
+              {{ vehicle.datumRegistracije }}
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

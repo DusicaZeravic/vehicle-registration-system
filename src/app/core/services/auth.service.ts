@@ -6,7 +6,7 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly API_URL = 'https://87cd-188-255-165-230.ngrok-free.app';
+  private readonly API_URL = 'https://seemed-davis-vat-drove.trycloudflare.com';
 
   constructor(private http: HttpClient) {}
 
@@ -30,10 +30,6 @@ export class AuthService {
 
   getAllClients(): Observable<any> {
     return this.http.get(`${this.API_URL}/api/Client/GetAll`);
-  }
-
-  logout() {
-    localStorage.removeItem('token');
   }
 
   isLoggedIn(): boolean {

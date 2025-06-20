@@ -1,7 +1,7 @@
 
 <div class="container">
-  <mat-card class="login-card">
-    <h2>Login</h2>
+  <mat-card class="auth-card">
+    <h2>Registracija</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Ime</mat-label>
@@ -18,9 +18,11 @@
         <input matInput formControlName="password" type="password" required />
       </mat-form-field>
   
-      <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
-        Login
-      </button>
+      <div class="button-wrapper">
+        <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+          Potvrdi
+        </button>
+      </div>
     </form>
   </mat-card>
 </div>

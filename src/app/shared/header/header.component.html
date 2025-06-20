@@ -1,0 +1,21 @@
+<mat-toolbar color="primary" class="header-toolbar header">
+  <span class="logo">eRegistracija</span>
+  <div class="header-links">
+    <button mat-button [routerLink]="['/registration/list']" routerLinkActive="router-link-active">Registracije</button>
+    <button mat-button [routerLink]="['/vehicle/list']" routerLinkActive="router-link-active" >Vozila</button>
+    <button mat-button [routerLink]="['/client/list']" routerLinkActive="router-link-active">Klijenti</button>
+  </div>
+  <button style="margin-left: auto;" mat-icon-button aria-label="Profil" [matMenuTriggerFor]="profileMenu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #profileMenu="matMenu">
+    <button mat-menu-item [routerLink]="'/profil'">
+      <mat-icon>person</mat-icon>
+      <span>Moj profil</span>
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      <span>Odjavi se</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>

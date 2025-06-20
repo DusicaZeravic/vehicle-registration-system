@@ -7,6 +7,11 @@ export const routes: Routes = [
       import("../../src/app/features/auth/routes").then((m) => m.AUTH_ROUTES),
   },
   {
+    path: "vehicle",
+    loadChildren: () =>
+      import("../../src/app/features/vehicle/routes").then((m) => m.VEHICLE_ROUTES),
+  },
+  {
     path: "",
     redirectTo: "auth/login",
     pathMatch: "full",
