@@ -1,11 +1,11 @@
 <div style="display: flex; justify-content: center; margin: 40px 0">
   <mat-card class="card">
     <mat-card-header class="card-header">
-      <mat-card-title>Lista vozila</mat-card-title>
+      <mat-card-title class="card-header-title">Lista vozila</mat-card-title>
       <button
         mat-flat-button
         matButton="filled"
-        routerLink="/vehicle/add"
+        (click)="navigateToVehicleCreatePage()"
         style="margin-left: auto"
       >
         <mat-icon aria-hidden="false" fontIcon="add">add</mat-icon>

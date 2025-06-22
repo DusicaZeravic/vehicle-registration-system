@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { VehicleService } from '../../../core/services/vehicle.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [
@@ -28,7 +29,9 @@ export class VehicleListComponent {
     'datumRegistracije'
   ];
 
-  constructor(private vehicleService: VehicleService) {}
+  constructor(private vehicleService: VehicleService,
+              private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getListOfVehicles();
@@ -41,5 +44,9 @@ export class VehicleListComponent {
       },
       error: (err) => console.log(err)
     })
+  }
+
+  navigateToVehicleCreatePage(): void {
+    this.router.navigate(['/vehicle/add']);
   }
 }

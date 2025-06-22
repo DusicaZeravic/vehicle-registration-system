@@ -5,6 +5,7 @@ html, body {
 
 body {
   font-family: 'Montserrat', sans-serif;
+  background-color: #f0f0f0;
 }
 
 .container {
@@ -39,25 +40,31 @@ mat-card.auth-card {
 
 mat-card.card {
   width: 80%;
-  background-color: #fff;
+  background-color: none;
   box-shadow: none;
 }
 
 mat-card-header.card-header {
   min-height: 60px;
   padding: 0 20px;
-  background-color: #f0f0f0;
+  background-color: #fff;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   border-radius: 4px;
 }
 
 mat-card-content.card-body {
-  margin-top: 20px;
+  margin: 20px 0 40px 0;
   padding: 0 0;
+  background-color: #fff;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
   border: 1px solid rgb(234, 234, 234);
   border-radius: 4px;
+}
+
+.card-header-title {
+  color: #494949;
 }
 
 .table-wrapper {
@@ -82,4 +89,16 @@ mat-card-content.card-body {
 .table td {
   font-size: 16px;
   border: 1px solid rgb(234, 234, 234);
+}
+
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 40px auto 20px auto;
+}
+
+mat-form-field.field {
+  height: 20px;
 }
