@@ -21,13 +21,17 @@
               {{ vehicle.registarskaOznaka }}
             </td>
           </ng-container>
+          <ng-container matColumnDef="tip">
+            <th mat-header-cell *matHeaderCellDef>Tip</th>
+            <td mat-cell *matCellDef="let vehicle">{{ vehicle.tipVozilaNaziv }}</td>
+          </ng-container>
           <ng-container matColumnDef="marka">
             <th mat-header-cell *matHeaderCellDef>Marka</th>
-            <td mat-cell *matCellDef="let vehicle">{{ vehicle.marka }}</td>
+            <td mat-cell *matCellDef="let vehicle">{{ vehicle.markaVozilaNaziv }}</td>
           </ng-container>
           <ng-container matColumnDef="model">
             <th mat-header-cell *matHeaderCellDef>Model</th>
-            <td mat-cell *matCellDef="let vehicle">{{ vehicle.model }}</td>
+            <td mat-cell *matCellDef="let vehicle">{{ vehicle.modelVozilaNaziv }}</td>
           </ng-container>
           <ng-container matColumnDef="godinaProizvodnje">
             <th mat-header-cell *matHeaderCellDef>Godina</th>
@@ -45,6 +49,15 @@
             <th mat-header-cell *matHeaderCellDef>Datum registracije</th>
             <td mat-cell *matCellDef="let vehicle">
               {{ vehicle.datumRegistracije }}
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let vehicle">
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <mat-icon aria-hidden="false" fontIcon="edit" (click)="onEditVehicle(vehicle)">edit</mat-icon>
+                <mat-icon aria-hidden="false" fontIcon="delete">delete</mat-icon>
+              </div>
             </td>
           </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

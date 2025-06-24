@@ -5,23 +5,23 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Marka</mat-label>
-    <mat-select formControlName="marka">
-      <mat-option *ngFor="let marka of marke" [value]="marka">{{ marka }}</mat-option>
+    <mat-label>Tip</mat-label>
+    <mat-select formControlName="tipVozilaId">
+      <mat-option *ngFor="let tip of vehicleTypes" [value]="tip.id">{{ tip.naziv }}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Tip</mat-label>
-    <mat-select formControlName="tip">
-      <mat-option *ngFor="let tip of tipovi" [value]="tip">{{tip}}</mat-option>
+    <mat-label>Marka</mat-label>
+    <mat-select formControlName="markaVozilaId">
+      <mat-option *ngFor="let marka of vehicleBrands" [value]="marka.id">{{ marka.naziv }}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Model</mat-label>
-    <mat-select formControlName="model">
-      <mat-option *ngFor="let model of modeli" [value]="model">{{model}}</mat-option>
+    <mat-select formControlName="modelVozilaId">
+      <mat-option *ngFor="let model of vehicleBrandModels" [value]="model.id">{{ model.naziv }}</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -33,10 +33,7 @@
   <mat-form-field appearance="outline">
     <mat-label>Vrsta goriva</mat-label>
     <mat-select formControlName="vrstaGoriva">
-      <mat-option value="benzin">Benzin</mat-option>
-      <mat-option value="dizel">Dizel</mat-option>
-      <mat-option value="elektricno">Električno</mat-option>
-      <mat-option value="hibrid">Hibrid</mat-option>
+      <mat-option *ngFor="let vrsta of vehicleFuelTypes" [value]="vrsta">{{ vrsta }}</mat-option>
     </mat-select>
   </mat-form-field>
 
@@ -74,6 +71,6 @@
     <mat-datepicker #reg></mat-datepicker>
   </mat-form-field>
 </form>
-<div style="display: flex; justify-content: center">
-  <button mat-raised-button color="primary" type="button" (ngSubmit)="addNewVehicle()">Sačuvaj</button>
+<div style="display: flex; justify-content: center; margin-bottom: 40px">
+  <button mat-raised-button color="primary" type="button" (click)="onAddNewVehicle()">Sačuvaj</button>
 </div>

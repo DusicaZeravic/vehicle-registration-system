@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { VehicleFormComponent } from '../components/vehicle-form/vehicle-form.component';
+import { VehicleService } from '../../../core/services/vehicle.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-add',
@@ -8,4 +10,16 @@ import { VehicleFormComponent } from '../components/vehicle-form/vehicle-form.co
   templateUrl: './vehicle-add.component.html',
   styleUrls: ['./vehicle-add.component.css']
 })
-export class VehicleAddComponent {}
+export class VehicleAddComponent {
+
+  constructor(private vehicleService: VehicleService, private router: Router) {}
+  
+  addVehicle(event: any): void {
+    this.vehicleService.addNewVehicle(event).subscribe({
+      next: (res) => {
+        this.router.navigate(['/vehicle/list']);
+      },
+      error: (err) => console.log(err)
+    });
+  }
+}

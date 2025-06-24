@@ -6,7 +6,7 @@ import { Observable, tap } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  private readonly API_URL = 'https://seemed-davis-vat-drove.trycloudflare.com';
+  private readonly API_URL = 'https://caused-wit-downloads-pursuant.trycloudflare.com';
 
   constructor(private http: HttpClient) {}
 

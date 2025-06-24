@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VehicleService {
-  private readonly API_URL = 'https://seemed-davis-vat-drove.trycloudflare.com';
+  private readonly API_URL = 'https://caused-wit-downloads-pursuant.trycloudflare.com';
 
   constructor(private http: HttpClient) {}
 
@@ -16,5 +16,17 @@ export class VehicleService {
 
   addNewVehicle(vehicle: any): Observable<any> {
     return this.http.post(`${this.API_URL}/api/Vehicle`, vehicle);
+  }
+
+  getVehicleTypes(): Observable<any> {
+    return this.http.get(`${this.API_URL}/api/VehicleType`);
+  }
+
+  getVehicleBrands(vehicleTypeId: string): Observable<any> {
+    return this.http.get(`${this.API_URL}/api/VehicleBrand/${vehicleTypeId}`);
+  }
+
+  getVehicleModels(brandId: string): Observable<any> {
+    return this.http.get(`${this.API_URL}/api/VehicleModel/${brandId}`);
   }
 }

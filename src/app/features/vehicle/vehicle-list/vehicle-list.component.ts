@@ -22,11 +22,13 @@ export class VehicleListComponent {
 
   displayedColumns: string[] = [
     'registarskaOznaka',
+    'tip',
     'marka',
     'model',
     'godinaProizvodnje',
     'vrstaGoriva',
-    'datumRegistracije'
+    'datumRegistracije',
+    'actions'
   ];
 
   constructor(private vehicleService: VehicleService,
@@ -44,6 +46,10 @@ export class VehicleListComponent {
       },
       error: (err) => console.log(err)
     })
+  }
+
+  onEditVehicle(vehicle: any): void {
+    this.router.navigate(['/vehicle', vehicle.id]);
   }
 
   navigateToVehicleCreatePage(): void {
