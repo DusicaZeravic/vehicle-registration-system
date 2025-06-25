@@ -1,3 +1,8 @@
+@import './app/styles/form.css';
+@import './app/styles/table.css';
+@import './app/styles/card.css';
+@import './app/styles/toastr.css';
+
 html, body {
   height: 100%;
   margin: 0;
@@ -14,95 +19,4 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-}
-
-mat-card.auth-card {
-  width: 100%;
-  min-height: 600px;
-  max-width: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 30px;
-  background-color: #f0f0f0;
-}
-
-.button-wrapper {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.full-width {
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-mat-card.card {
-  width: 80%; 
-  background-color: none;
-  box-shadow: none;
-}
-
-mat-card-header.card-header {
-  min-height: 60px;
-  padding: 0 20px;
-  background-color: #fff;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-  display: flex;
-  align-items: center;
-  border-radius: 4px;
-}
-
-mat-card-content.card-body {
-  margin: 20px 0 40px 0;
-  padding: 0 0;
-  background-color: #fff;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgb(234, 234, 234);
-  border-radius: 4px;
-}
-
-mat-card-content.card-body:last-child {
-  padding-bottom: 0;
-}
-
-.card-header-title {
-  color: #494949;
-}
-
-.table-wrapper {
-  overflow-x: auto;
-}
-
-.table {
-  width: 100%;
-  background-color: white !important;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgb(234, 234, 234);
-}
-
-.table th {
-  text-transform: uppercase;
-  font-weight: bold;
-  text-align: start;
-  border: 1px solid rgb(234, 234, 234);
-}
-
-.table td {
-  font-size: 16px;
-  border: 1px solid rgb(234, 234, 234);
-}
-
-.form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  max-width: 900px;
-  margin: 40px auto 20px auto;
-}
-
-mat-form-field.field {
-  height: 20px;
 }

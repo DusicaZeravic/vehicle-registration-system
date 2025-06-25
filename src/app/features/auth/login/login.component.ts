@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { AuthService } from '../../../core/services/auth.service';
 import { Router, RouterModule } from '@angular/router';
+import { MessageService } from '../../../core/services/message.service';
 
 @Component({
   standalone: true,
@@ -27,6 +28,7 @@ import { Router, RouterModule } from '@angular/router';
 export class LoginComponent {
   constructor(private fb: FormBuilder,
     private authService: AuthService,
+    private messageService: MessageService,
     private router: Router
   ) {}
 
@@ -49,7 +51,9 @@ export class LoginComponent {
       next: (res) => {
         this.router.navigate(['/vehicle/list']);
       },
-      error: (err) => alert('Login failed')
+      error: (err) => {
+        this.messageService.error(err);
+      }
     });
   }
 

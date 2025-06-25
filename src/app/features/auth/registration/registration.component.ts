@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MessageService } from '../../../core/services/message.service';
 
 @Component({
   selector: 'app-registration',
@@ -24,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 export class RegistrationComponent {
   constructor(private fb: FormBuilder,
     private authService: AuthService,
+    private messageService: MessageService,
     private router: Router
   ) {}
 
@@ -43,10 +45,12 @@ export class RegistrationComponent {
     };
 
     this.authService.register(data).subscribe({
-      next: (res) => {
+      next: () => {
         this.router.navigate(['/']);
       },
-      error: (err) => alert('Login failed')
+      error: (err) => {
+        this.messageService.error(err);
+      }
     });
   }
 

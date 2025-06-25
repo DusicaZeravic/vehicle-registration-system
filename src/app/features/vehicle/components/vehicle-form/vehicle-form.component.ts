@@ -9,6 +9,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { CommonModule } from "@angular/common";
 import { VehicleService } from "../../../../core/services/vehicle.service";
 import { Router } from "@angular/router";
+import { MessageService } from '../../../../core/services/message.service';
 
 @Component({
   selector: "app-vehicle-form",
@@ -44,6 +45,7 @@ export class VehicleFormComponent {
   constructor(
     private fb: FormBuilder,
     private vehicleService: VehicleService,
+    private messageService: MessageService,
     private router: Router
   ) {}
 
@@ -85,7 +87,9 @@ export class VehicleFormComponent {
           this.vehicleTypes.push(vehicleType);
         });
       },
-      error: (err) => console.log(err),
+      error: (err) => {
+        this.messageService.error(err);
+      },
     });
   }
 
@@ -97,7 +101,9 @@ export class VehicleFormComponent {
           this.vehicleBrands.push(vehicleBrand);
         });
       },
-      error: (err) => console.log(err),
+      error: (err) => {
+        this.messageService.error(err);
+      },
     });
   }
 
@@ -109,7 +115,9 @@ export class VehicleFormComponent {
           this.vehicleBrandModels.push(vehicleBrandModel);
         });
       },
-      error: (err) => console.log(err),
+      error: (err) => {
+        this.messageService.error(err);
+      },
     });
   }
 
