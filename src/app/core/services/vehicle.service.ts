@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VehicleService {
-  private readonly API_URL = 'https://caused-wit-downloads-pursuant.trycloudflare.com';
+  private readonly API_URL = 'https://ingredients-llc-wholesale-reuters.trycloudflare.com';
 
   constructor(private http: HttpClient) {}
 
@@ -28,5 +28,9 @@ export class VehicleService {
 
   getVehicleModels(brandId: string): Observable<any> {
     return this.http.get(`${this.API_URL}/api/VehicleModel/${brandId}`);
+  }
+
+  deleteVehicle(vehicleId: string): Observable<any> {
+    return this.http.delete(`${this.API_URL}/api/Vehicle/${vehicleId}`);
   }
 }

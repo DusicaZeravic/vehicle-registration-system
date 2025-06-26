@@ -19,7 +19,7 @@ bootstrapApplication(AppComponent, {
       LoadingBarHttpClientModule,
     ),
     ...ToastrModule.forRoot({
-      timeOut: 0,
+      timeOut: 3000,
       closeButton: true,
       positionClass: 'toast-top-right',
     }).providers
