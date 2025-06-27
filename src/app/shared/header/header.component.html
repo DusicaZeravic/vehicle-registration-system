@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="header-toolbar header">
-  <span class="logo">eRegistracija</span>
+  <span class="logo" [routerLink]="['/registration/list']">eRegistracija</span>
   <div class="header-links">
     <button mat-button [routerLink]="['/registration/list']" routerLinkActive="router-link-active">Registracije</button>
     <button mat-button [routerLink]="['/vehicle/list']" routerLinkActive="router-link-active" >Vozila</button>

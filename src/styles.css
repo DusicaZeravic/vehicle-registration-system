@@ -20,3 +20,7 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+.pointer {
+  cursor: pointer;
+}

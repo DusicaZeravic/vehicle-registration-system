@@ -17,6 +17,11 @@ export const routes: Routes = [
       import("../../src/app/features/registration/routes").then((m) => m.REGISTRATION_ROUTES),
   },
   {
+    path: "client",
+    loadChildren: () =>
+      import("../../src/app/features/client/routes").then((m) => m.CLIENT_ROUTES),
+  },
+  {
     path: "",
     redirectTo: "auth/login",
     pathMatch: "full",

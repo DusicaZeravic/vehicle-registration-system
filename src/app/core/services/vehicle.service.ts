@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class VehicleService {
-  private readonly API_URL = 'https://ingredients-llc-wholesale-reuters.trycloudflare.com';
+  private readonly API_URL = 'https://comics-amended-internet-gamecube.trycloudflare.com';
 
   constructor(private http: HttpClient) {}
 
