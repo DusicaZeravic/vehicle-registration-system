@@ -9,9 +9,11 @@ import { MessageService } from '../../../core/services/message.service';
 import { ToastrModule } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { QuestionModalComponent } from '../../../shared/question-modal/question-modal.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   imports: [
+    CommonModule,
     MatTableModule,
     MatCardModule,
     MatIconModule,

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -50,18 +50,18 @@ export class VehicleFormComponent {
 
   ngOnInit(): void {
     this.vehicleForm = this.fb.group({
-      brojSasije: [""],
-      datumPrveRegistracije: [""],
-      datumRegistracije: [""],
-      godinaProizvodnje: [""],
-      markaVozilaId: [""],
-      modelVozilaId: [""],
-      tipVozilaId: [""],
-      registarskaOznaka: [""],
-      masa: [""],
-      snagaMotora: [""],
-      zapreminaMotora: [""],
-      vrstaGoriva: [""],
+      brojSasije: ["", Validators.required],
+      datumPrveRegistracije: ["", Validators.required],
+      datumRegistracije: ["", Validators.required],
+      godinaProizvodnje: ["", Validators.required],
+      markaVozilaId: ["", Validators.required],
+      modelVozilaId: ["", Validators.required],
+      tipVozilaId: ["", Validators.required],
+      registarskaOznaka: ["", Validators.required],
+      masa: ["", Validators.required],
+      snagaMotora: ["", Validators.required],
+      zapreminaMotora: ["", Validators.required],
+      vrstaGoriva: ["", Validators.required],
     });
     this.getVehicleTypes();
 

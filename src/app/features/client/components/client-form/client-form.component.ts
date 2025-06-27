@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
-import { FormBuilder, FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
@@ -32,14 +32,14 @@ export class ClientFormComponent {
 
   ngOnInit(): void {
     this.clientForm = this.fb.group({
-      ime: [""],
-      prezime: [""],
-      jmbg: [""],
-      adresa: [""],
+      ime: ["", Validators.required],
+      prezime: ["", Validators.required],
+      jmbg: ["", [Validators.required, Validators.pattern(/^\d{13}$/)]],
+      adresa: ["", Validators.required],
       brojTelefona: [""],
-      email: [""],
+      email: ["", Validators.email],
       datumRodjenja: [""],
-      brojLicneKarte: [""],
+      brojLicneKarte: ["", [Validators.required, Validators.pattern(/^\d{9}$/)]],
     });
   }
 

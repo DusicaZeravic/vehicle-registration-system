@@ -33,7 +33,7 @@
           </ng-container>
           <ng-container matColumnDef="datumRodjenja">
             <th mat-header-cell *matHeaderCellDef>Datum rodjenja</th>
-            <td mat-cell *matCellDef="let client">{{ client.datumRodjenja }}</td>
+            <td mat-cell *matCellDef="let client">{{ client.datumRodjenja | date: 'dd.MM.yyyy.' }}</td>
           </ng-container>
           <ng-container matColumnDef="brojTelefona">
             <th mat-header-cell *matHeaderCellDef>Telefon</th>

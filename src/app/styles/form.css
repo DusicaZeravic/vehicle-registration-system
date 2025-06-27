@@ -7,5 +7,16 @@
 }
 
 mat-form-field.field {
+  width: 100%;
+}
+
+mat-error {
+  font-size: 14px;
+  padding: 0;
+}
+
+.error-message {
   height: 20px;
+  color: red;
+  font-size: 14px;
 }

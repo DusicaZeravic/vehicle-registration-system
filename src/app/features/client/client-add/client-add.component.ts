@@ -3,7 +3,7 @@ import { ClientService } from '../../../core/services/client.service';
 import { MessageService } from '../../../core/services/message.service';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
-import { ClientFormComponent } from './components/client-form/client-form.component';
+import { ClientFormComponent } from '../components/client-form/client-form.component';
 
 @Component({
   selector: 'app-client-add',
