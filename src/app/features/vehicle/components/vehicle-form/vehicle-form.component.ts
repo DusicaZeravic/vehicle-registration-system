@@ -24,7 +24,6 @@ import { MessageService } from '../../../../core/services/message.service';
     MatButtonModule,
   ],
   templateUrl: "./vehicle-form.component.html",
-  styleUrls: ["./vehicle-form.component.css"],
 })
 export class VehicleFormComponent {
   vehicleForm: FormGroup;
