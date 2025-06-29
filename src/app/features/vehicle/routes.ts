@@ -18,7 +18,7 @@ export const VEHICLE_ROUTES: Routes = [
     component: VehicleAddComponent
   },
   {
-    path: 'vehicle/:id',
+    path: ':id',
     component: VehicleDetailsComponent
   }
 ];

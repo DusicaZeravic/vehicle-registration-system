@@ -84,7 +84,7 @@ export class ClientListComponent {
     this.clientService.deleteClient(client.id).subscribe({
       next: () => {
         this.getListOfClients();
-        this.messageService.success('Uspešno ste obrisali klijenta.');
+        this.messageService.success('Uspješno ste obrisali klijenta.');
       },
       error: (err) => {
         this.messageService.error(err);

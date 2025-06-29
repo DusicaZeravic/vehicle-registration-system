@@ -18,19 +18,29 @@ export class VehicleService {
     return this.http.post(`${this.API_URL}/api/Vehicle`, vehicle);
   }
 
+  getVehicleById(vehicleId: string): Observable<any> {
+    return this.http.get(`${this.API_URL}/api/Vehicle/${vehicleId}`);
+  }
+
   getVehicleTypes(): Observable<any> {
     return this.http.get(`${this.API_URL}/api/VehicleType`);
   }
 
   getVehicleBrands(vehicleTypeId: string): Observable<any> {
-    return this.http.get(`${this.API_URL}/api/VehicleBrand/${vehicleTypeId}`);
+    return this.http.get(`${this.API_URL}/api/VehicleBrand/ListById/${vehicleTypeId}`);
   }
 
   getVehicleModels(brandId: string): Observable<any> {
-    return this.http.get(`${this.API_URL}/api/VehicleModel/${brandId}`);
+    return this.http.get(`${this.API_URL}/api/VehicleModel/list/${brandId}`);
   }
 
-  deleteVehicle(vehicleId: string): Observable<any> {
-    return this.http.delete(`${this.API_URL}/api/Vehicle/${vehicleId}`);
+  editVehicle(vehicle: any): Observable<any> {
+    return this.http.put(`${this.API_URL}/api/Vehicle`, vehicle);
+  }
+
+  deleteVehicle(id: any): Observable<any> {
+    return this.http.delete(`${this.API_URL}/api/Vehicle`, {
+      params: { id }
+    });
   }
 }

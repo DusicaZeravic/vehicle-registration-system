@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -25,6 +25,8 @@ import { MessageService } from '../../../../core/services/message.service';
   templateUrl: "./vehicle-form.component.html",
 })
 export class VehicleFormComponent {
+  @Input() vehicle: any;
+  @Input() vehicleId: string;
   vehicleForm: FormGroup;
   vehicleTypes: Array<{ id: string; naziv: string; kategorija: string }> = []; // change type
   vehicleBrands: Array<{ id: string; naziv: string; tipVozilaId: string }> = [];
@@ -39,12 +41,19 @@ export class VehicleFormComponent {
     "Kompresovani prirodni gas",
   ];
   @Output() vehicleAdded = new EventEmitter<void>();
+  @Output() vehicleChanged = new EventEmitter<void>();
 
   constructor(
     private fb: FormBuilder,
     private vehicleService: VehicleService,
     private messageService: MessageService,
   ) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['vehicle'] && this.vehicleForm && this.vehicle) {
+      this.vehicleForm.patchValue(this.vehicle);
+    }
+  }
 
   ngOnInit(): void {
     this.vehicleForm = this.fb.group({
@@ -61,6 +70,7 @@ export class VehicleFormComponent {
       zapreminaMotora: ["", Validators.required],
       vrstaGoriva: ["", Validators.required],
     });
+    
     this.getVehicleTypes();
 
     this.vehicleForm.get("tipVozilaId")?.valueChanges.subscribe((tip) => {
@@ -116,6 +126,14 @@ export class VehicleFormComponent {
         this.messageService.error(err);
       },
     });
+  }
+
+  onSave() {
+    this.vehicleId ? this.onEditVehicle() : this.onAddNewVehicle();
+  }
+
+  onEditVehicle() {
+    this.vehicleChanged.emit(this.vehicleForm.value);
   }
 
   onAddNewVehicle() {

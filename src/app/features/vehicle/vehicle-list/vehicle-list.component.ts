@@ -80,11 +80,11 @@ export class VehicleListComponent {
     });
   }
 
-  deleteVehicle(vehicle: any) {
+  deleteVehicle(vehicle: any) {    
     this.vehicleService.deleteVehicle(vehicle.id).subscribe({
       next: () => {
         this.getListOfVehicles();
-        this.messageService.success('Uspešno ste obrisali vozilo.');
+        this.messageService.success('Uspješno ste obrisali vozilo.');
       },
       error: (err) => {
         this.messageService.error(err);
