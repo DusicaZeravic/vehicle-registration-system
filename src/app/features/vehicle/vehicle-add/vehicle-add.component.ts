@@ -9,7 +9,6 @@ import { MessageService } from '../../../core/services/message.service';
   selector: 'app-vehicle-add',
   imports: [MatCardModule, VehicleFormComponent],
   templateUrl: './vehicle-add.component.html',
-  styleUrls: ['./vehicle-add.component.css']
 })
 export class VehicleAddComponent {
 

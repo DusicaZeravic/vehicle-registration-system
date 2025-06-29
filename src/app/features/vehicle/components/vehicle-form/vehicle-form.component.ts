@@ -8,7 +8,6 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { CommonModule } from "@angular/common";
 import { VehicleService } from "../../../../core/services/vehicle.service";
-import { Router } from "@angular/router";
 import { MessageService } from '../../../../core/services/message.service';
 
 @Component({
@@ -45,7 +44,6 @@ export class VehicleFormComponent {
     private fb: FormBuilder,
     private vehicleService: VehicleService,
     private messageService: MessageService,
-    private router: Router
   ) {}
 
   ngOnInit(): void {

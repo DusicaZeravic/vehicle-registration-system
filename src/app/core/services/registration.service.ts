@@ -13,4 +13,8 @@ export class RegistrationService {
   getAllRegistartions(): Observable<any> {
     return this.http.get(`${this.API_URL}/api/RegistrationVehicle`);
   }
+
+  addNewRegistration(registration: any): Observable<any> {
+    return this.http.post(`${this.API_URL}/api/RegistrationVehicle`, registration);
+  }
 }
