@@ -45,15 +45,15 @@
               {{ registration.cijenaRegistracije | number:'1.2-2' }}
             </td>
           </ng-container>
-          <!-- <ng-container matColumnDef="actions">
+          <ng-container matColumnDef="actions">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let registration">
               <div style="display: flex; align-items: center; justify-content: space-between;">
-                <mat-icon class="pointer" aria-hidden="false" fontIcon="edit" (click)="onEditVehicle(vehicle)">edit</mat-icon>
-                <mat-icon class="pointer" aria-hidden="false" fontIcon="delete" (click)="onDeleteVehicle(vehicle)">delete</mat-icon>
+                <mat-icon class="pointer" style="margin-right: 10px" aria-hidden="false" fontIcon="edit" (click)="onEditRegistration(registration)">edit</mat-icon>
+                <mat-icon class="pointer" aria-hidden="false" fontIcon="delete" (click)="onDeleteRegistration(registration)">delete</mat-icon>
               </div>
             </td>
-          </ng-container> -->
+          </ng-container>
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
         </table>

@@ -18,7 +18,7 @@ export const REGISTRATION_ROUTES: Routes = [
     component: RegistrationAddComponent
   },
   {
-    path: 'registration/:id',
+    path: ':id',
     component: RegistrationDetailsComponent
   }
 ];

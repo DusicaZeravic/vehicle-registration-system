@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RegistrationService } from '../../../core/services/registration.service';
 import { MessageService } from '../../../core/services/message.service';
 import { Router } from '@angular/router';
@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { QuestionModalComponent } from '../../../shared/question-modal/question-modal.component';
 
 @Component({
   selector: 'app-registration-list',
@@ -24,6 +26,7 @@ import { CommonModule } from '@angular/common';
 })
 
 export class RegistrationListComponent {
+  dialog = inject(MatDialog);
   registrations: any[] = [];
 
   displayedColumns: string[] = [
@@ -32,7 +35,8 @@ export class RegistrationListComponent {
     'vlasnik',
     'datumRegistracije',
     'datumIstekaRegistracije',
-    'cijenaRegistracije'
+    'cijenaRegistracije',
+    'actions'
   ];
 
   constructor(private registrationService: RegistrationService,
@@ -62,4 +66,30 @@ export class RegistrationListComponent {
   navigateToRegistrationCreatePage(): void {
     this.router.navigate(['/registration/add']);
   }
+
+  onEditRegistration(registration: any): void {
+    this.router.navigate(['/registration', registration.id]);
+  }
+
+    onDeleteRegistration(registration: any) {
+      this.dialog.open(QuestionModalComponent, {
+        width: '400px',
+      }).afterClosed().subscribe((confirmed: boolean) => {
+        if (confirmed) {
+          this.deleteRegistration(registration);
+        }
+      });
+    }
+  
+    deleteRegistration(registration: any) {    
+      this.registrationService.deleteRegistration(registration.id).subscribe({
+        next: () => {
+          this.getListOfRegistrations();
+          this.messageService.success('Uspješno ste obrisali registraciju.');
+        },
+        error: (err) => {
+          this.messageService.error(err);
+        }
+      })
+    }
 }

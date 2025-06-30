@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { VehicleService } from '../../../../core/services/vehicle.service';
 import { MessageService } from '../../../../core/services/message.service';
@@ -31,6 +31,8 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
   providers: [provideNgxMask()]
 })
 export class RegistrationFormComponent {
+  @Input() registrationId: string;
+  @Input() registration: any;
   registrationForm: FormGroup;
   vehicles: any[] = [];
   clients: any[] = [];
@@ -41,12 +43,35 @@ export class RegistrationFormComponent {
   ];
 
   @Output() registrationAdded = new EventEmitter<void>();
+  @Output() registrationChanged = new EventEmitter<void>();
 
   constructor(private fb: FormBuilder,
               private vehicleService: VehicleService,
               private clientService: ClientService,
               private messageService: MessageService,
   ) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['registration'] && this.registrationForm && this.registration) {
+      const osiguranjeIds = (this.registration.osiguranja || []).map(
+        (insurance: any) => insurance.id.toLowerCase()
+      );
+  
+      this.insurances = this.insurances.map(i => ({
+        ...i,
+        id: i.id.toLowerCase()
+      }));
+  
+      this.registrationForm.patchValue({
+        voziloId: this.registration.voziloId,
+        klijentId: this.registration.klijentId,
+        datumRegistracije: this.registration.datumRegistracije,
+        cijenaRegistracije: this.registration.cijenaRegistracije,
+        privremenaRegistracija: this.registration.privremenaRegistracija,
+        osiguranjeIds: osiguranjeIds
+      });
+    }
+  }
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
@@ -92,6 +117,15 @@ export class RegistrationFormComponent {
       }
     })
   }
+
+  onSave() {
+    this.registrationId ? this.onEditRegistration() : this.onAddNewRegistration();
+  }
+
+  onEditRegistration() {
+    this.registrationChanged.emit(this.registrationForm.value);
+  }
+
 
   onAddNewRegistration() {
     if (this.registrationForm.valid) {

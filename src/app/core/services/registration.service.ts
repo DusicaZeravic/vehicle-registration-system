@@ -14,7 +14,21 @@ export class RegistrationService {
     return this.http.get(`${this.API_URL}/api/RegistrationVehicle`);
   }
 
+  getRegistrationById(registrationId: string): Observable<any> {
+    return this.http.get(`${this.API_URL}/api/RegistrationVehicle/${registrationId}`);
+  }
+
   addNewRegistration(registration: any): Observable<any> {
     return this.http.post(`${this.API_URL}/api/RegistrationVehicle`, registration);
+  }
+
+  editRegistration(registration: any): Observable<any> {
+    return this.http.put(`${this.API_URL}/api/RegistrationVehicle`, registration);
+  }
+
+  deleteRegistration(id: any): Observable<any> {
+    return this.http.delete(`${this.API_URL}/api/RegistrationVehicle`, {
+      params: { id }
+    });
   }
 }
