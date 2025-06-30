@@ -1,4 +1,5 @@
 import { Routes } from "@angular/router";
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 export const routes: Routes = [
   {
@@ -26,5 +27,5 @@ export const routes: Routes = [
     redirectTo: "auth/login",
     pathMatch: "full",
   },
-  { path: "**", redirectTo: "auth/login" },
+  { path: '**', component: NotFoundComponent },
 ];
