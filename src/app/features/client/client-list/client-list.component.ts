@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { QuestionModalComponent } from '../../../shared/question-modal/question-modal.component';
 import { ClientService } from '../../../core/services/client.service';
 import { CommonModule } from '@angular/common';
-import { EmptyComponent } from '../../../shared/empty/empty.component';
+import { EmptyListComponent } from '../../../shared/empty-list/empty-list.component';
 
 @Component({
   imports: [
@@ -20,7 +20,7 @@ import { EmptyComponent } from '../../../shared/empty/empty.component';
     MatIconModule,
     MatButtonModule,
     ToastrModule,
-    EmptyComponent
+    EmptyListComponent
   ],
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
