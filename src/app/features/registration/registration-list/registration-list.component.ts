@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { QuestionModalComponent } from '../../../shared/question-modal/question-modal.component';
+import { EmptyComponent } from '../../../shared/empty/empty.component';
 
 @Component({
   selector: 'app-registration-list',
@@ -20,7 +21,8 @@ import { QuestionModalComponent } from '../../../shared/question-modal/question-
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    ToastrModule
+    ToastrModule,
+    EmptyComponent
   ],
   styleUrls: ['./registration-list.component.css']
 })

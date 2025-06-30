@@ -10,6 +10,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { QuestionModalComponent } from '../../../shared/question-modal/question-modal.component';
 import { CommonModule } from '@angular/common';
+import { EmptyComponent } from '../../../shared/empty/empty.component';
 
 @Component({
   imports: [
@@ -18,7 +19,8 @@ import { CommonModule } from '@angular/common';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    ToastrModule
+    ToastrModule,
+    EmptyComponent
   ],
   selector: 'app-vehicle-list',
   templateUrl: './vehicle-list.component.html',
