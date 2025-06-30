@@ -14,11 +14,21 @@ export class ClientService {
     return this.http.get(`${this.API_URL}/api/Client`);
   }
 
+  getClientById(clientId: string): Observable<any> {
+    return this.http.get(`${this.API_URL}/api/Client/${clientId}`);
+  }
+
   addNewClient(client: any): Observable<any> {
     return this.http.post(`${this.API_URL}/api/Client`, client);
   }
 
-  deleteClient(clientId: string): Observable<any> {
-    return this.http.delete(`${this.API_URL}/api/Client/${clientId}`);
+  editClient(client: any): Observable<any> {
+    return this.http.put(`${this.API_URL}/api/Client`, client);
+  }
+
+  deleteClient(id: any): Observable<any> {
+    return this.http.delete(`${this.API_URL}/api/Client`, {
+      params: { id }
+    });
   }
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from "@angular/core";
+import { Component, EventEmitter, Input, Output, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -23,12 +23,22 @@ import { CommonModule } from "@angular/common";
   templateUrl: "./client-form.component.html",
 })
 export class ClientFormComponent {
+  @Input() clientId: string;
+  @Input() client: any;
   clientForm: FormGroup;
   @Output() clientAdded = new EventEmitter<void>();
+  @Output() clientChanged = new EventEmitter<void>();
 
   constructor(
     private fb: FormBuilder,
   ) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['client'] && this.clientForm && this.client) {
+      this.clientForm.patchValue(this.client);
+    }
+  }
+
 
   ngOnInit(): void {
     this.clientForm = this.fb.group({
@@ -41,6 +51,14 @@ export class ClientFormComponent {
       datumRodjenja: [""],
       brojLicneKarte: ["", [Validators.required, Validators.pattern(/^\d{9}$/)]],
     });
+  }
+
+  onSave(): void {
+    this.clientId ? this.onEditClient() : this.onAddNewClient();
+  }
+
+  onEditClient(): void {
+    this.clientChanged.emit(this.clientForm.value);
   }
 
   onAddNewClient() {

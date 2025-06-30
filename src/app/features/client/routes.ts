@@ -18,7 +18,7 @@ export const CLIENT_ROUTES: Routes = [
     component: ClientAddComponent
   },
   {
-    path: 'vehicle/:id',
+    path: ':id',
     component: ClientDetailsComponent
   }
 ];
