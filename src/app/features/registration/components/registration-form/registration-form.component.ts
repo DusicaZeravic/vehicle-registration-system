@@ -12,6 +12,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { InsuranceService } from '../../../../core/services/insurance.service';
 
 @Component({
   selector: 'app-registration-form',
@@ -36,11 +37,7 @@ export class RegistrationFormComponent {
   registrationForm: FormGroup;
   vehicles: any[] = [];
   clients: any[] = [];
-  insurances: any[] = [
-    {id: 'E40105EB-D13B-43E8-D893-08DDB33FBCEA', naziv: 'Sava Osiguranje', tipOsiguranja: 'Kasko'},
-    {id: '5CE4B9B0-8819-4C04-D894-08DDB33FBCEA', naziv: 'Delta Generali', tipOsiguranja: 'Auto - odgovornost'},
-    {id: '47FCFBB1-6B6A-41D5-D895-08DDB33FBCEA', naziv: 'Sava Osiguranje', tipOsiguranja: 'Osiguranje vozila od pozara'},
-  ];
+  insurances: any[] = [];
 
   @Output() registrationAdded = new EventEmitter<void>();
   @Output() registrationChanged = new EventEmitter<void>();
@@ -49,6 +46,7 @@ export class RegistrationFormComponent {
               private vehicleService: VehicleService,
               private clientService: ClientService,
               private messageService: MessageService,
+              private insuranceService: InsuranceService,
   ) {}
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -85,6 +83,7 @@ export class RegistrationFormComponent {
 
     this.getListOfVehicles();
     this.getListOfClients();
+    this.getListOfInsurances();
   }
 
 
@@ -111,6 +110,19 @@ export class RegistrationFormComponent {
           this.clients.push(vehicle);
         });
 
+      },
+      error: (err) => {
+        this.messageService.error(err);
+      }
+    })
+  }
+
+  getListOfInsurances(): void {
+    this.insuranceService.getAllInsurances().subscribe({
+      next: (res) => {
+        res.forEach((insurance) => {
+          this.insurances.push(insurance);
+        })
       },
       error: (err) => {
         this.messageService.error(err);

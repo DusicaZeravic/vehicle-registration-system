@@ -1,8 +1,9 @@
 <mat-toolbar color="primary" class="header-toolbar header">
-  <span class="logo" [routerLink]="['/registration/list']">eRegistracija</span>
+  <span class="pointer" [routerLink]="['/registration/list']">eRegistracija</span>
   <div class="header-links">
     <button mat-button [routerLink]="['/vehicle/list']" routerLinkActive="router-link-active" >Vozila</button>
     <button mat-button [routerLink]="['/client/list']" routerLinkActive="router-link-active">Klijenti</button>
+    <button mat-button [routerLink]="['/insurance/list']" routerLinkActive="router-link-active">Osiguranja</button>
     <button mat-button [routerLink]="['/registration/list']" routerLinkActive="router-link-active">Registracije</button>
   </div>
   <button style="margin-left: auto;" mat-icon-button aria-label="Profil" [matMenuTriggerFor]="profileMenu">

@@ -84,7 +84,7 @@ export class MessageService {
           errorMessage = "Vozilo sa ovim modelom već postoji";
           break;
         case 'VEHICLE_ALREADY_REGISTERED':
-          errorMessage = "Vozilo je već registrirano";
+          errorMessage = "Vozilo je već registrovano";
           break;
         case 'REGISTRATION_INVALID_DATE':
           errorMessage = "Datum registracije nije validan. Ne može biti izabran datum u budućnosti.";
@@ -129,6 +129,9 @@ export class MessageService {
           errorMessage = "Snaga motora mora biti veća od 0";
           break;
         case 'PRODUCTION_YEAR_AFTER_FIRST_REGISTRATION':
+          errorMessage = "Godina proizvodnje mora biti pre datuma prve registracije";
+          break;
+        case 'PRODUCTION_DATE_AFTER_FIRST_REGISTRATION':
           errorMessage = "Godina proizvodnje mora biti pre datuma prve registracije";
           break;
         case 'VEHICLE_TYPE_CATEGORY_EXISTS':
