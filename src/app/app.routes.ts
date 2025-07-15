@@ -28,6 +28,11 @@ export const routes: Routes = [
       import("../../src/app/features/insurance/routes").then((m) => m.INSURANCE_ROUTES),
   },
   {
+    path: "user",
+    loadChildren: () =>
+      import("../../src/app/features/user/routes").then((m) => m.USER_ROUTES),
+  },
+  {
     path: "",
     redirectTo: "auth/login",
     pathMatch: "full",

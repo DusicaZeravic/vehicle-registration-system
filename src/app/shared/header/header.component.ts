@@ -14,7 +14,7 @@ import { Router, RouterModule } from "@angular/router";
 export class HeaderComponent {
   constructor(private router: Router) {}
   logout() {
-    localStorage.removeItem("token");
+    localStorage.clear();
     this.router.navigate(["/auth/login"]);
   }
 }

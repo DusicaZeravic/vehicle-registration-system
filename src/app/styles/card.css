@@ -22,7 +22,6 @@ mat-card.auth-card {
 
 mat-card.card {
   width: 80%; 
-  background-color: none;
   box-shadow: none;
 }
 
@@ -37,7 +36,7 @@ mat-card-header.card-header {
 }
 
 mat-card-content.card-body {
-  margin: 20px 0 40px 0;
+  margin: 20px 0 0 0;
   padding: 0 0;
   background-color: #fff;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
@@ -47,6 +46,17 @@ mat-card-content.card-body {
 
 mat-card-content.card-body:last-child {
   padding-bottom: 0;
+}
+
+mat-card-actions.card-footer {
+  min-height: 60px;
+  padding: 0 20px;
+  background-color: #fff;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 4px;
 }
 
 .card-header-title {

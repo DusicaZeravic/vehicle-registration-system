@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class InsuranceService {
-  private readonly API_URL = 'https://comics-amended-internet-gamecube.trycloudflare.com';
+  private readonly API_URL = 'https://mae-produce-discipline-tutorial.trycloudflare.com';
 
   constructor(private http: HttpClient) {}
 

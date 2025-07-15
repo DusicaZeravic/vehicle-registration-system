@@ -4,8 +4,8 @@
     <h2>Prijava</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline" floatLabel="always" class="full-width">
-        <mat-label>Ime i prezime</mat-label>
-        <input matInput formControlName="username" type="text" placeholder="Ime i prezime" required />
+        <mat-label>Ime</mat-label>
+        <input matInput formControlName="username" type="text" placeholder="Ime" required />
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
