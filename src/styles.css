@@ -24,3 +24,20 @@ body {
 .pointer {
   cursor: pointer;
 }
+
+.register-link {
+  margin-top: 6rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.register-link a {
+  margin-left: 0.3rem;
+  text-decoration: none;
+  color: #3f51b5;
+  font-weight: 500;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

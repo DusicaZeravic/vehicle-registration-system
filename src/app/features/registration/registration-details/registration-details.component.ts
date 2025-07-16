@@ -30,7 +30,7 @@ export class RegistrationDetailsComponent {
   getRegistrationById(): void {
     this.registrationService.getRegistrationById(this.registrationId).subscribe({
       next: (res) => {
-        this.registration = res;
+        this.registration = res.data;
       },
       error: (err) => {
         this.messageService.error(err);

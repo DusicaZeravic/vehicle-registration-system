@@ -53,7 +53,7 @@ export class ClientListComponent {
     this.clientService.getAllClients().subscribe({
       next: (res) => {
         this.clients = [];
-        res.forEach((vehicle) => {
+        res.data.items.forEach((vehicle) => {
           this.clients.push(vehicle);
         });
 

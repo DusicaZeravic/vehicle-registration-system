@@ -91,7 +91,7 @@ export class RegistrationFormComponent {
     this.vehicleService.getAllVehicles().subscribe({
       next: (res) => {
         this.vehicles = [];
-        res.forEach((vehicle) => {
+        res.data.items.forEach((vehicle) => {
           this.vehicles.push(vehicle);
         });
 
@@ -106,7 +106,7 @@ export class RegistrationFormComponent {
     this.clientService.getAllClients().subscribe({
       next: (res) => {
         this.clients = [];
-        res.forEach((vehicle) => {
+        res.data.items.forEach((vehicle) => {
           this.clients.push(vehicle);
         });
 

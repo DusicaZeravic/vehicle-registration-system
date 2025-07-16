@@ -30,7 +30,7 @@ export class ClientDetailsComponent {
   getClientById(): void {
     this.clienService.getClientById(this.clientId).subscribe({
       next: (res) => {
-        this.client = res;
+        this.client = res.data;
       },
       error: (err) => {
         this.messageService.error(err);

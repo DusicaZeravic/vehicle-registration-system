@@ -29,7 +29,7 @@ export class VehicleDetailsComponent {
   getVehicleById(): void {
     this.vehicleService.getVehicleById(this.vehicleId).subscribe({
       next: (res) => {
-        this.vehicle = res;
+        this.vehicle = res.data;
       },
       error: (err) => {
         this.messageService.error(err);

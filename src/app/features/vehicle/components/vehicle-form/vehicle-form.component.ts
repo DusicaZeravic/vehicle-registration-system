@@ -90,7 +90,7 @@ export class VehicleFormComponent {
     this.vehicleTypes = [];
     this.vehicleService.getVehicleTypes().subscribe({
       next: (res) => {
-        res.forEach((vehicleType) => {
+        res.data.forEach((vehicleType) => {
           this.vehicleTypes.push(vehicleType);
         });
       },
@@ -104,7 +104,7 @@ export class VehicleFormComponent {
     this.vehicleBrands = [];
     this.vehicleService.getVehicleBrands(vehicleTypeId).subscribe({
       next: (res) => {
-        res.forEach((vehicleBrand) => {
+        res.data.forEach((vehicleBrand) => {
           this.vehicleBrands.push(vehicleBrand);
         });
       },
@@ -118,7 +118,7 @@ export class VehicleFormComponent {
     this.vehicleBrandModels = [];
     this.vehicleService.getVehicleModels(brandId).subscribe({
       next: (res) => {
-        res.forEach((vehicleBrandModel) => {
+        res.data.forEach((vehicleBrandModel) => {
           this.vehicleBrandModels.push(vehicleBrandModel);
         });
       },

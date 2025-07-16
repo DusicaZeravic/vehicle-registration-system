@@ -53,7 +53,7 @@ export class VehicleListComponent {
     this.vehicleService.getAllVehicles().subscribe({
       next: (res) => {
         this.vehicles = [];
-        res.forEach((vehicle) => {
+        res.data.items.forEach((vehicle) => {
           this.vehicles.push(vehicle);
         });
 

@@ -43,12 +43,7 @@ export class ChangePasswordComponent {
   }
 
   changePassword(): void {
-    const data = {
-      ...this.passwordForm.value,
-      Email: this.currentUser.email
-    };
-
-    this.authService.changePassword(data).subscribe({
+    this.authService.changePassword(this.passwordForm.value).subscribe({
       next: () => {
         this.messageService.success('Lozinka je uspješno promijenjena');
       },

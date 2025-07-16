@@ -54,7 +54,7 @@ export class RegistrationListComponent {
     this.registrationService.getAllRegistartions().subscribe({
       next: (res) => {
         this.registrations = [];
-        res.forEach((vehicle) => {
+        res.data.items.forEach((vehicle) => {
           this.registrations.push(vehicle);
         });
 

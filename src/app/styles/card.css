@@ -11,8 +11,13 @@ mat-card.auth-card {
 }
 
 .button-wrapper {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+
+.button-wrapper button {
+  width: 100%;
 }
 
 .full-width {
