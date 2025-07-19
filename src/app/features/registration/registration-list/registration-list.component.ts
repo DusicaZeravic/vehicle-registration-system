@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { QuestionModalComponent } from '../../../shared/question-modal/question-modal.component';
 import { EmptyListComponent } from '../../../shared/empty-list/empty-list.component';
+import { SearchComponent } from '../../../shared/search/search.component';
 
 @Component({
   selector: 'app-registration-list',
@@ -22,14 +23,15 @@ import { EmptyListComponent } from '../../../shared/empty-list/empty-list.compon
     MatIconModule,
     MatButtonModule,
     ToastrModule,
-    EmptyListComponent
+    EmptyListComponent,
+    SearchComponent
   ],
-  styleUrls: ['./registration-list.component.css']
 })
 
 export class RegistrationListComponent {
   dialog = inject(MatDialog);
   registrations: any[] = [];
+  searchTerm: string = '';
 
   displayedColumns: string[] = [
     'voziloMarkaModel',
@@ -51,7 +53,7 @@ export class RegistrationListComponent {
   }
 
   getListOfRegistrations(): void {
-    this.registrationService.getAllRegistartions().subscribe({
+    this.registrationService.getAllRegistartions(this.searchTerm).subscribe({
       next: (res) => {
         this.registrations = [];
         res.data.items.forEach((vehicle) => {
@@ -63,6 +65,11 @@ export class RegistrationListComponent {
         this.messageService.error(err);
       }
     })
+  }
+
+  onSearchChange(value: string): void {
+    this.searchTerm = value;
+    this.getListOfRegistrations();
   }
 
   navigateToRegistrationCreatePage(): void {

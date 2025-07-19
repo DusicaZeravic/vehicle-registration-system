@@ -11,6 +11,7 @@ import { QuestionModalComponent } from '../../../shared/question-modal/question-
 import { ClientService } from '../../../core/services/client.service';
 import { CommonModule } from '@angular/common';
 import { EmptyListComponent } from '../../../shared/empty-list/empty-list.component';
+import { SearchComponent } from '../../../shared/search/search.component';
 
 @Component({
   imports: [
@@ -20,7 +21,8 @@ import { EmptyListComponent } from '../../../shared/empty-list/empty-list.compon
     MatIconModule,
     MatButtonModule,
     ToastrModule,
-    EmptyListComponent
+    EmptyListComponent,
+    SearchComponent
   ],
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
@@ -28,6 +30,7 @@ import { EmptyListComponent } from '../../../shared/empty-list/empty-list.compon
 export class ClientListComponent {
   dialog = inject(MatDialog);
   clients: any[] = []; // napraviti model
+  searchTerm: string = '';
 
   displayedColumns: string[] = [
     'ime',
@@ -50,7 +53,7 @@ export class ClientListComponent {
   }
 
   getListOfClients(): void {
-    this.clientService.getAllClients().subscribe({
+    this.clientService.getAllClients(this.searchTerm).subscribe({
       next: (res) => {
         this.clients = [];
         res.data.items.forEach((vehicle) => {
@@ -62,6 +65,11 @@ export class ClientListComponent {
         this.messageService.error(err);
       }
     })
+  }
+
+  onSearchChange(value: string): void {
+    this.searchTerm = value;
+    this.getListOfClients();
   }
 
   onEditClient(client: any): void {

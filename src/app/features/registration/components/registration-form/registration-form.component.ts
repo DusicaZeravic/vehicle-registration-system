@@ -120,7 +120,7 @@ export class RegistrationFormComponent {
   getListOfInsurances(): void {
     this.insuranceService.getAllInsurances().subscribe({
       next: (res) => {
-        res.forEach((insurance) => {
+        res.data.forEach((insurance) => {
           this.insurances.push(insurance);
         })
       },

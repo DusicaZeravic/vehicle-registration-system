@@ -41,3 +41,7 @@ body {
 .register-link a:hover {
   text-decoration: underline;
 }
+
+button[mat-flat-button] {
+  border-radius: 4px !important;
+}

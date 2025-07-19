@@ -48,7 +48,7 @@ export class InsuranceListComponent {
     this.insuranceService.getAllInsurances().subscribe({
       next: (res) => {
         this.insurances = [];
-        res.forEach((insurance) => {
+        res.data.forEach((insurance) => {
           this.insurances.push(insurance);
         });
 

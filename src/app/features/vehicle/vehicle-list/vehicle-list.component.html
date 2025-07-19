@@ -1,17 +1,26 @@
 <div style="display: flex; justify-content: center; margin: 40px 0">
   <mat-card class="card">
     <mat-card-header class="card-header">
-      <mat-card-title class="card-header-title">Lista vozila</mat-card-title>
-      <button
-        mat-flat-button
-        matButton="filled"
-        (click)="navigateToVehicleCreatePage()"
-        style="margin-left: auto"
-      >
-        <mat-icon aria-hidden="false" fontIcon="add">add</mat-icon>
-         Dodajte vozilo
-      </button>
-    </mat-card-header>
+      <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 16px; flex-wrap: wrap;">
+        <mat-card-title class="card-header-title" style="margin: 0; flex: 0 0 auto;">
+          Lista vozila
+        </mat-card-title>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <app-search [placeholder]="'Unesite registarsku oznaku, marku, model...'" 
+                      [label]="'Pretražite vozila'"
+                      (searchChange)="onSearchChange($event)"></app-search>
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="navigateToVehicleCreatePage()"
+            style="height: 56px; white-space: nowrap;"
+          >
+            <mat-icon>add</mat-icon>
+            Dodajte vozilo
+          </button>
+        </div>
+      </div>
+    </mat-card-header>    
     <mat-card-content class="card-body">
       <div class="table-wrapper">
         <ng-container *ngIf="vehicles.length > 0; else noVehicles">

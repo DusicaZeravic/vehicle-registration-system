@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,8 +10,12 @@ export class VehicleService {
 
   constructor(private http: HttpClient) {}
 
-  getAllVehicles(): Observable<any> {
-    return this.http.get(`${this.API_URL}/api/Vehicle`);
+  getAllVehicles(search?: string): Observable<any> {
+    let params = new HttpParams();
+
+    if (search) params = params.append('searchQuery', search);
+
+    return this.http.get(`${this.API_URL}/api/Vehicle`, { params });
   }
 
   addNewVehicle(vehicle: any): Observable<any> {
