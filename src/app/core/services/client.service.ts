@@ -10,10 +10,12 @@ export class ClientService {
 
   constructor(private http: HttpClient) {}
 
-  getAllClients(search?: string): Observable<any> {
+  getAllClients(search?: string, pageSize?: number, pageNumber?: number): Observable<any> {
     let params = new HttpParams();
 
     if (search) params = params.append('searchQuery', search);
+    if (pageSize) params = params.append('pageSize', pageSize);
+    if (pageNumber) params = params.append('pageNumber', pageNumber);
 
     return this.http.get(`${this.API_URL}/api/Client`, { params });
   }

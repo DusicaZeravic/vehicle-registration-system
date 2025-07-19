@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
 import { MessageService } from '../../../core/services/message.service';
 import { ToastrModule } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
-import { QuestionModalComponent } from '../../../shared/question-modal/question-modal.component';
+import { QuestionModalComponent } from '../../../shared/components/question-modal/question-modal.component';
 import { ClientService } from '../../../core/services/client.service';
 import { CommonModule } from '@angular/common';
-import { EmptyListComponent } from '../../../shared/empty-list/empty-list.component';
-import { SearchComponent } from '../../../shared/search/search.component';
+import { EmptyListComponent } from '../../../shared/components/empty-list/empty-list.component';
+import { SearchComponent } from '../../../shared/components/search/search.component';
+import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 
 @Component({
   imports: [
@@ -22,7 +23,8 @@ import { SearchComponent } from '../../../shared/search/search.component';
     MatButtonModule,
     ToastrModule,
     EmptyListComponent,
-    SearchComponent
+    SearchComponent,
+    PaginationComponent
   ],
   selector: 'app-client-list',
   templateUrl: './client-list.component.html',
@@ -31,6 +33,9 @@ export class ClientListComponent {
   dialog = inject(MatDialog);
   clients: any[] = []; // napraviti model
   searchTerm: string = '';
+  totalItems: number;
+  currentPageSize: number = 5;
+  currentPage: number = 1;
 
   displayedColumns: string[] = [
     'ime',
@@ -53,13 +58,13 @@ export class ClientListComponent {
   }
 
   getListOfClients(): void {
-    this.clientService.getAllClients(this.searchTerm).subscribe({
+    this.clientService.getAllClients(this.searchTerm,  this.currentPageSize, this.currentPage).subscribe({
       next: (res) => {
         this.clients = [];
         res.data.items.forEach((vehicle) => {
           this.clients.push(vehicle);
         });
-
+        this.totalItems = res.data.totalCount;
       },
       error: (err) => {
         this.messageService.error(err);
@@ -100,5 +105,10 @@ export class ClientListComponent {
         this.messageService.error(err);
       }
     })
+  }
+
+  onPaginationChange(event: { pageNumber: number }) {
+    this.currentPage = event.pageNumber;
+    this.getListOfClients();
   }
 }

@@ -28,6 +28,7 @@ mat-card.auth-card {
 mat-card.card {
   width: 80%; 
   box-shadow: none;
+  margin-bottom: 20px;
 }
 
 mat-card-header.card-header {

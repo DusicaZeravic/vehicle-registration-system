@@ -1,4 +1,4 @@
-<div style="display: flex; justify-content: center; margin: 40px 0">
+<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 40px 0">
   <mat-card class="card">
     <mat-card-header class="card-header">
       <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 16px; flex-wrap: wrap;">
@@ -110,4 +110,7 @@
       </div>
     </mat-card-content>
   </mat-card>
+  <app-pagination [totalItems]="totalItems"
+                  [pageSize]="currentPageSize"
+                  (paginationChange)="onPaginationChange($event)"></app-pagination>
 </div>

@@ -8,10 +8,11 @@ import { Router } from "@angular/router";
 import { MessageService } from "../../../core/services/message.service";
 import { ToastrModule } from "ngx-toastr";
 import { MatDialog } from "@angular/material/dialog";
-import { QuestionModalComponent } from "../../../shared/question-modal/question-modal.component";
+import { QuestionModalComponent } from "../../../shared/components/question-modal/question-modal.component";
 import { CommonModule } from "@angular/common";
-import { EmptyListComponent } from "../../../shared/empty-list/empty-list.component";
-import { SearchComponent } from '../../../shared/search/search.component';
+import { EmptyListComponent } from "../../../shared/components/empty-list/empty-list.component";
+import { SearchComponent } from '../../../shared/components/search/search.component';
+import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 
 @Component({
   imports: [
@@ -22,7 +23,8 @@ import { SearchComponent } from '../../../shared/search/search.component';
     MatButtonModule,
     ToastrModule,
     EmptyListComponent,
-    SearchComponent
+    SearchComponent,
+    PaginationComponent
   ],
   selector: "app-vehicle-list",
   templateUrl: "./vehicle-list.component.html",
@@ -31,6 +33,9 @@ export class VehicleListComponent {
   dialog = inject(MatDialog);
   vehicles: any[] = []; // napraviti model
   searchTerm: string = '';
+  totalItems: number;
+  currentPageSize: number = 5;
+  currentPage: number = 1;
 
   displayedColumns: string[] = [
     "registarskaOznaka",
@@ -54,12 +59,13 @@ export class VehicleListComponent {
   }
 
   getListOfVehicles(): void {
-    this.vehicleService.getAllVehicles(this.searchTerm).subscribe({
+    this.vehicleService.getAllVehicles(this.searchTerm, this.currentPageSize, this.currentPage).subscribe({
       next: (res) => {
         this.vehicles = [];
         res.data.items.forEach((vehicle) => {
           this.vehicles.push(vehicle);
         });
+        this.totalItems = res.data.totalCount;
       },
       error: (err) => {
         this.messageService.error(err);
@@ -103,5 +109,10 @@ export class VehicleListComponent {
         this.messageService.error(err);
       },
     });
+  }
+
+  onPaginationChange(event: { pageNumber: number }) {
+    this.currentPage = event.pageNumber;
+    this.getListOfVehicles();
   }
 }
