@@ -30,7 +30,7 @@ export class InsuranceDetailsComponent {
   getInsuranceById(): void {
     this.insuranceService.getInsuranceById(this.insuranceId).subscribe({
       next: (res) => {
-        this.insurance = res;
+        this.insurance = res.data;
       },
       error: (err) => {
         this.messageService.error(err);

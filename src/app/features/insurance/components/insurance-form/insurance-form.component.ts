@@ -37,7 +37,6 @@ export class InsuranceFormComponent {
   ngOnInit(): void {
     this.insuranceForm = this.fb.group({
       naziv: ["", Validators.required],
-      tipOsiguranja: ["", Validators.required],
     });
   }
 

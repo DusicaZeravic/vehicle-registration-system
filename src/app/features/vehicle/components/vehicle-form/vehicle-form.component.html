@@ -26,11 +26,6 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Registarska oznaka</mat-label>
-    <input matInput formControlName="registarskaOznaka" />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
     <mat-label>Vrsta goriva</mat-label>
     <mat-select formControlName="vrstaGoriva">
       <mat-option *ngFor="let vrsta of vehicleFuelTypes" [value]="vrsta">{{ vrsta }}</mat-option>
@@ -63,14 +58,7 @@
     <mat-datepicker-toggle matSuffix [for]="prva"></mat-datepicker-toggle>
     <mat-datepicker #prva></mat-datepicker>
   </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Datum registracije</mat-label>
-    <input matInput [matDatepicker]="reg" formControlName="datumRegistracije" />
-    <mat-datepicker-toggle matSuffix [for]="reg"></mat-datepicker-toggle>
-    <mat-datepicker #reg></mat-datepicker>
-  </mat-form-field>
 </form>
 <div style="display: flex; justify-content: center; margin-bottom: 40px">
-  <button mat-raised-button color="primary" type="button" [disabled]="vehicleForm.invalid" (click)="onSave()">Sačuvajte</button>
+  <button mat-flat-button color="primary" type="button" [disabled]="vehicleForm.invalid" (click)="onSave()">Sačuvajte</button>
 </div>

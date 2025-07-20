@@ -66,7 +66,8 @@ export class RegistrationFormComponent {
         datumRegistracije: this.registration.datumRegistracije,
         cijenaRegistracije: this.registration.cijenaRegistracije,
         privremenaRegistracija: this.registration.privremenaRegistracija,
-        osiguranjeIds: osiguranjeIds
+        osiguranjeIds: osiguranjeIds,
+        registarskaOznaka: this.registration.registarskaOznaka
       });
     }
   }
@@ -79,6 +80,7 @@ export class RegistrationFormComponent {
       cijenaRegistracije: [null, Validators.required],
       privremenaRegistracija: [false, Validators.required],
       osiguranjeIds: [[], [Validators.required, Validators.min(1)]],
+      registarskaOznaka: ["", Validators.required],
     });
 
     this.getListOfVehicles();

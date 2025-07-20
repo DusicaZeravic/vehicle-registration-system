@@ -40,7 +40,7 @@ export class RegistrationListComponent {
 
   displayedColumns: string[] = [
     'voziloMarkaModel',
-    'voziloRegistarskaOznaka',
+    'registarskaOznaka',
     'vlasnik',
     'datumRegistracije',
     'datumIstekaRegistracije',

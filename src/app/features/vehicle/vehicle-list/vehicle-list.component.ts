@@ -38,13 +38,11 @@ export class VehicleListComponent {
   currentPage: number = 1;
 
   displayedColumns: string[] = [
-    "registarskaOznaka",
     "tip",
     "marka",
     "model",
     "godinaProizvodnje",
     "vrstaGoriva",
-    "datumRegistracije",
     "actions",
   ];
 

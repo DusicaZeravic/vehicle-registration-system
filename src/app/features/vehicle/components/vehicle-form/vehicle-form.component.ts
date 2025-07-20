@@ -59,12 +59,10 @@ export class VehicleFormComponent {
     this.vehicleForm = this.fb.group({
       brojSasije: ["", Validators.required],
       datumPrveRegistracije: ["", Validators.required],
-      datumRegistracije: ["", Validators.required],
       godinaProizvodnje: ["", Validators.required],
       markaVozilaId: ["", Validators.required],
       modelVozilaId: ["", Validators.required],
       tipVozilaId: ["", Validators.required],
-      registarskaOznaka: ["", Validators.required],
       masa: ["", Validators.required],
       snagaMotora: ["", Validators.required],
       zapreminaMotora: ["", Validators.required],

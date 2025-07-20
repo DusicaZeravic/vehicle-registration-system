@@ -3,12 +3,7 @@
     <mat-label>Naziv</mat-label>
     <input matInput formControlName="naziv" />
   </mat-form-field>
-
-  <mat-form-field appearance="outline">
-    <mat-label>Tip osiguranja</mat-label>
-    <input matInput formControlName="tipOsiguranja" />
-  </mat-form-field>
 </form>
 <div style="display: flex; justify-content: center; margin-bottom: 40px">
-  <button mat-raised-button color="primary" type="button" [disabled]="insuranceForm.invalid" (click)="onSave()">Sačuvajte</button>
+  <button mat-flat-button color="primary" type="button" [disabled]="insuranceForm.invalid" (click)="onSave()">Sačuvajte</button>
 </div>

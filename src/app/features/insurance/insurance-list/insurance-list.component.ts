@@ -31,7 +31,6 @@ export class InsuranceListComponent {
 
   displayedColumns: string[] = [
     'naziv',
-    'tipOsiguranja',
     'actions'
   ];
 

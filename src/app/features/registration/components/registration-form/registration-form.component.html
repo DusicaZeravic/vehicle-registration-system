@@ -26,10 +26,15 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Odaberi osiguranja</mat-label>
-    <mat-select formControlName="osiguranjeIds" multiple>
+    <mat-label>Registarska oznaka</mat-label>
+    <input type="text" matInput formControlName="registarskaOznaka" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Odaberi osiguranje</mat-label>
+    <mat-select formControlName="osiguranjeIds">
       <mat-option *ngFor="let insurance of insurances" [value]="insurance.id">
-        {{ insurance.naziv }} - {{ insurance.tipOsiguranja }}
+        {{ insurance.naziv }}
       </mat-option>
     </mat-select>
   </mat-form-field>  
@@ -38,6 +43,6 @@
     Privremena registracija
   </mat-slide-toggle>
 </form>
-<div style="display: flex; justify-content: center; margin-bottom: 40px">
-  <button mat-raised-button color="primary" type="button" [disabled]="registrationForm.invalid" (click)="onSave()">Sačuvajte</button>
+<div style="display: flex; justify-content: center; margin-bottom: 40px;">
+  <button mat-flat-button color="primary" type="button" [disabled]="registrationForm.invalid" (click)="onSave()">Sačuvajte</button>
 </div>
