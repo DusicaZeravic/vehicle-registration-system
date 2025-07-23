@@ -27,7 +27,7 @@ import { EmptyListComponent } from '../../../shared/components/empty-list/empty-
 })
 export class InsuranceListComponent {
   dialog = inject(MatDialog);
-  insurances: any[] = []; // napraviti model
+  insurances: Array<{ id: string; naziv: string;}> = [];
 
   displayedColumns: string[] = [
     'naziv',
@@ -58,7 +58,7 @@ export class InsuranceListComponent {
     })
   }
 
-  onEditInsurance(insurance: any): void {
+  onEditInsurance(insurance: { id: string; naziv: string }): void {
     this.router.navigate(['/insurance', insurance.id]);
   }
 
@@ -66,7 +66,7 @@ export class InsuranceListComponent {
     this.router.navigate(['/insurance/add']);
   }
 
-  onDeleteInsurance(insurance: any) {
+  onDeleteInsurance(insurance: { id: string; naziv: string }): void {
     this.dialog.open(QuestionModalComponent, {
       width: '400px',
     }).afterClosed().subscribe((confirmed: boolean) => {
@@ -76,7 +76,7 @@ export class InsuranceListComponent {
     });
   }
 
-  deleteInsurance(insurance: any) {    
+  deleteInsurance(insurance: { id: string; naziv: string }): void {    
     this.insuranceService.deleteInsurance(insurance.id).subscribe({
       next: () => {
         this.getListOfInsurances();

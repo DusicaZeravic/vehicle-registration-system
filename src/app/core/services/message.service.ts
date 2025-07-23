@@ -20,7 +20,7 @@ export class MessageService {
   }
 
   error(error: any): void {
-    let errorMessage: string = "Dogodila se greška";
+    let errorMessage: string;
 
     if (error && error.error) {
       const code = error.error.errorCode;
@@ -90,7 +90,7 @@ export class MessageService {
           errorMessage = "Datum registracije nije validan. Ne može biti izabran datum u budućnosti.";
           break;
         case 'REGISTRATION_INVALID_PRICE':
-          errorMessage = "Cijena registracije nije validna. Morate uneti broj većih od 0.";
+          errorMessage = "Cijena registracije nije validna. Morate uneti broj veći od 0.";
           break;
         case 'REGISTRATION_VEHICLE_INVALID_ID':
           errorMessage = "Vozilo nije pronađeno";

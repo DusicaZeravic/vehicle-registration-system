@@ -13,7 +13,7 @@ import { InsuranceFormComponent } from '../components/insurance-form/insurance-f
 
 export class InsuranceDetailsComponent {
   insuranceId: string;
-  insurance: any;
+  insurance: { id: string; naziv: string };
   constructor(private route: ActivatedRoute,
               private insuranceService: InsuranceService,
               private messageService: MessageService,

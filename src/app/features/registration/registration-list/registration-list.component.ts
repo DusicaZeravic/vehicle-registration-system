@@ -13,6 +13,7 @@ import { QuestionModalComponent } from '../../../shared/components/question-moda
 import { EmptyListComponent } from '../../../shared/components/empty-list/empty-list.component';
 import { SearchComponent } from '../../../shared/components/search/search.component';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
+import { Registration } from '../../../core/models/registration.model';
 
 @Component({
   selector: 'app-registration-list',
@@ -32,7 +33,7 @@ import { PaginationComponent } from '../../../shared/components/pagination/pagin
 
 export class RegistrationListComponent {
   dialog = inject(MatDialog);
-  registrations: any[] = [];
+  registrations: Array<Registration> = [];
   searchTerm: string = '';
   totalItems: number;
   currentPageSize: number = 5;
@@ -81,11 +82,11 @@ export class RegistrationListComponent {
     this.router.navigate(['/registration/add']);
   }
 
-  onEditRegistration(registration: any): void {
+  onEditRegistration(registration: Registration): void {
     this.router.navigate(['/registration', registration.id]);
   }
 
-  onDeleteRegistration(registration: any) {
+  onDeleteRegistration(registration: Registration): void {
     this.dialog.open(QuestionModalComponent, {
       width: '400px',
     }).afterClosed().subscribe((confirmed: boolean) => {
@@ -95,7 +96,7 @@ export class RegistrationListComponent {
     });
   }
 
-  deleteRegistration(registration: any) {    
+  deleteRegistration(registration: Registration): void {    
     this.registrationService.deleteRegistration(registration.id).subscribe({
       next: () => {
         this.getListOfRegistrations();
@@ -107,7 +108,7 @@ export class RegistrationListComponent {
     })
   }
 
-  onPaginationChange(event: { pageNumber: number }) {
+  onPaginationChange(event: { pageNumber: number }): void {
     this.currentPage = event.pageNumber;
     this.getListOfRegistrations();
   }

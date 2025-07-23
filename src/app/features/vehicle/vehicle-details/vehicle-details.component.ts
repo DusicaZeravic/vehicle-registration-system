@@ -4,6 +4,7 @@ import { VehicleService } from '../../../core/services/vehicle.service';
 import { MessageService } from '../../../core/services/message.service';
 import { VehicleFormComponent } from '../components/vehicle-form/vehicle-form.component';
 import { MatCardModule } from '@angular/material/card';
+import { Vehicle } from '../../../core/models/vehicle.model';
 
 @Component({
   selector: 'app-vehicle-details',
@@ -12,7 +13,7 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class VehicleDetailsComponent {
   vehicleId: string;
-  vehicle: any;
+  vehicle: Vehicle;
   constructor(private route: ActivatedRoute,
               private vehicleService: VehicleService,
               private messageService: MessageService,

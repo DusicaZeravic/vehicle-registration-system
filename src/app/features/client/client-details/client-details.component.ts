@@ -4,6 +4,7 @@ import { ClientService } from '../../../core/services/client.service';
 import { MessageService } from '../../../core/services/message.service';
 import { MatCardModule } from '@angular/material/card';
 import { ClientFormComponent } from '../components/client-form/client-form.component';
+import { Client } from '../../../core/models/client.model';
 
 @Component({
   selector: 'app-client-details',
@@ -13,7 +14,7 @@ import { ClientFormComponent } from '../components/client-form/client-form.compo
 
 export class ClientDetailsComponent {
   clientId: string;
-  client: any;
+  client: Client;
   constructor(private route: ActivatedRoute,
               private clienService: ClientService,
               private messageService: MessageService,
@@ -41,7 +42,7 @@ export class ClientDetailsComponent {
   editClient(clientData: any): void {
     if (clientData) {
       this.clienService.editClient({...clientData, id: this.clientId}).subscribe({
-        next: (res) => {
+        next: () => {
           this.messageService.success('Klijent je uspješno izmijenjen');
           this.router.navigate(['/client/list']);
         },

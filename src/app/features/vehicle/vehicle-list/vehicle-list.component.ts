@@ -13,6 +13,7 @@ import { CommonModule } from "@angular/common";
 import { EmptyListComponent } from "../../../shared/components/empty-list/empty-list.component";
 import { SearchComponent } from '../../../shared/components/search/search.component';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
+import { Vehicle } from '../../../core/models/vehicle.model';
 
 @Component({
   imports: [
@@ -31,7 +32,7 @@ import { PaginationComponent } from '../../../shared/components/pagination/pagin
 })
 export class VehicleListComponent {
   dialog = inject(MatDialog);
-  vehicles: any[] = []; // napraviti model
+  vehicles: Array<Vehicle> = [];
   searchTerm: string = '';
   totalItems: number;
   currentPageSize: number = 5;
@@ -76,7 +77,7 @@ export class VehicleListComponent {
     this.getListOfVehicles();
   }
 
-  onEditVehicle(vehicle: any): void {
+  onEditVehicle(vehicle: Vehicle): void {
     this.router.navigate(["/vehicle", vehicle.id]);
   }
 
@@ -84,7 +85,7 @@ export class VehicleListComponent {
     this.router.navigate(["/vehicle/add"]);
   }
 
-  onDeleteVehicle(vehicle: any) {
+  onDeleteVehicle(vehicle: Vehicle) {
     this.dialog
       .open(QuestionModalComponent, {
         width: "400px",
@@ -97,7 +98,7 @@ export class VehicleListComponent {
       });
   }
 
-  deleteVehicle(vehicle: any) {
+  deleteVehicle(vehicle: Vehicle): void {
     this.vehicleService.deleteVehicle(vehicle.id).subscribe({
       next: () => {
         this.getListOfVehicles();

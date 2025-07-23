@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { EmptyListComponent } from '../../../shared/components/empty-list/empty-list.component';
 import { SearchComponent } from '../../../shared/components/search/search.component';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
+import { Client } from '../../../core/models/client.model';
 
 @Component({
   imports: [
@@ -31,7 +32,7 @@ import { PaginationComponent } from '../../../shared/components/pagination/pagin
 })
 export class ClientListComponent {
   dialog = inject(MatDialog);
-  clients: any[] = []; // napraviti model
+  clients: Array<Client> = [];
   searchTerm: string = '';
   totalItems: number;
   currentPageSize: number = 5;
@@ -77,7 +78,7 @@ export class ClientListComponent {
     this.getListOfClients();
   }
 
-  onEditClient(client: any): void {
+  onEditClient(client: Client): void {
     this.router.navigate(['/client', client.id]);
   }
 
@@ -85,7 +86,7 @@ export class ClientListComponent {
     this.router.navigate(['/client/add']);
   }
 
-  onDeleteClient(client: any) {
+  onDeleteClient(client: Client): void {
     this.dialog.open(QuestionModalComponent, {
       width: '400px',
     }).afterClosed().subscribe((confirmed: boolean) => {
@@ -95,7 +96,7 @@ export class ClientListComponent {
     });
   }
 
-  deleteClient(client: any) {
+  deleteClient(client: Client): void {
     this.clientService.deleteClient(client.id).subscribe({
       next: () => {
         this.getListOfClients();
@@ -107,7 +108,7 @@ export class ClientListComponent {
     })
   }
 
-  onPaginationChange(event: { pageNumber: number }) {
+  onPaginationChange(event: { pageNumber: number }): void {
     this.currentPage = event.pageNumber;
     this.getListOfClients();
   }

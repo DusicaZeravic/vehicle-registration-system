@@ -4,6 +4,7 @@ import { RegistrationService } from '../../../core/services/registration.service
 import { MessageService } from '../../../core/services/message.service';
 import { MatCardModule } from '@angular/material/card';
 import { RegistrationFormComponent } from '../components/registration-form/registration-form.component';
+import { Registration } from '../../../core/models/registration.model';
 
 @Component({
   selector: 'app-registration-details',
@@ -12,7 +13,7 @@ import { RegistrationFormComponent } from '../components/registration-form/regis
 })
 export class RegistrationDetailsComponent {
   registrationId: string;
-  registration: any; // model
+  registration: Registration;
 
   constructor(private route: ActivatedRoute,
               private registrationService: RegistrationService,

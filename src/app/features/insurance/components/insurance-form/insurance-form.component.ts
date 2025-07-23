@@ -18,7 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 })
 
 export class InsuranceFormComponent {
-  @Input() insurance: any;
+  @Input() insurance: { id: string; naziv: string };
   @Input() insuranceId: string;
   insuranceForm: FormGroup;
   @Output() insuranceAdded = new EventEmitter<void>();

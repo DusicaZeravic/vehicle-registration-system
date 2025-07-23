@@ -37,7 +37,7 @@ export class LoginComponent {
     password: ['', Validators.required],
   });
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.loginForm.invalid) return;
 
     const data = {
@@ -47,7 +47,7 @@ export class LoginComponent {
     };
 
     this.authService.login(data).subscribe({
-      next: (res) => {
+      next: () => {
         this.router.navigate(['/vehicle/list']);
       },
       error: (err) => {
@@ -56,7 +56,7 @@ export class LoginComponent {
     });
   }
 
-  get login(): any {
+  get login() {
     return this.loginForm.controls;
   }
 }

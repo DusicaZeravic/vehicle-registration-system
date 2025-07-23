@@ -7,6 +7,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { CommonModule } from "@angular/common";
+import { Client } from '../../../../core/models/client.model';
 
 @Component({
   selector: "app-client-form",
@@ -24,7 +25,7 @@ import { CommonModule } from "@angular/common";
 })
 export class ClientFormComponent {
   @Input() clientId: string;
-  @Input() client: any;
+  @Input() client: Client;
   clientForm: FormGroup;
   @Output() clientAdded = new EventEmitter<void>();
   @Output() clientChanged = new EventEmitter<void>();

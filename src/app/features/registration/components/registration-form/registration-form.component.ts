@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { VehicleService } from '../../../../core/services/vehicle.service';
 import { MessageService } from '../../../../core/services/message.service';
 import { ClientService } from '../../../../core/services/client.service';
@@ -11,8 +11,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { InsuranceService } from '../../../../core/services/insurance.service';
+import { Registration } from '../../../../core/models/registration.model';
+import { Vehicle } from '../../../../core/models/vehicle.model';
+import { Client } from '../../../../core/models/client.model';
 
 @Component({
   selector: 'app-registration-form',
@@ -27,17 +29,15 @@ import { InsuranceService } from '../../../../core/services/insurance.service';
     MatNativeDateModule,
     MatButtonModule,
     MatSlideToggleModule,
-    NgxMaskDirective
   ],
-  providers: [provideNgxMask()]
 })
 export class RegistrationFormComponent {
   @Input() registrationId: string;
-  @Input() registration: any;
+  @Input() registration: Registration;
   registrationForm: FormGroup;
-  vehicles: any[] = [];
-  clients: any[] = [];
-  insurances: any[] = [];
+  vehicles: Array<Vehicle> = [];
+  clients: Array<Client> = [];
+  insurances: Array<{ id: string; naziv: string }> = [];
 
   @Output() registrationAdded = new EventEmitter<void>();
   @Output() registrationChanged = new EventEmitter<void>();
@@ -51,9 +51,7 @@ export class RegistrationFormComponent {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['registration'] && this.registrationForm && this.registration) {
-      const osiguranjeIds = (this.registration.osiguranja || []).map(
-        (insurance: any) => insurance.id.toLowerCase()
-      );
+      const osiguranjeId = this.registration.osiguranje?.id || null;
   
       this.insurances = this.insurances.map(i => ({
         ...i,
@@ -64,23 +62,21 @@ export class RegistrationFormComponent {
         voziloId: this.registration.voziloId,
         klijentId: this.registration.klijentId,
         datumRegistracije: this.registration.datumRegistracije,
-        cijenaRegistracije: this.registration.cijenaRegistracije,
         privremenaRegistracija: this.registration.privremenaRegistracija,
-        osiguranjeIds: osiguranjeIds,
+        osiguranjeId: osiguranjeId,
         registarskaOznaka: this.registration.registarskaOznaka
       });
     }
-  }
+  }  
 
   ngOnInit(): void {
     this.registrationForm = this.fb.group({
       voziloId: ["", Validators.required],
       klijentId: ["", Validators.required],
       datumRegistracije: [new Date(), Validators.required],
-      cijenaRegistracije: [null, Validators.required],
       privremenaRegistracija: [false, Validators.required],
-      osiguranjeIds: [[], [Validators.required, Validators.min(1)]],
-      registarskaOznaka: ["", Validators.required],
+      osiguranjeId: ["", [Validators.required]],
+      registarskaOznaka: ["", [Validators.required, this.validateRegistrarskaOznaka()]],
     });
 
     this.getListOfVehicles();
@@ -145,5 +141,20 @@ export class RegistrationFormComponent {
     if (this.registrationForm.valid) {
       this.registrationAdded.emit(this.registrationForm.value);
     }
+  }
+
+  validateRegistrarskaOznaka(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const value = control.value;
+  
+      if (!value) {
+        return null;
+      }
+  
+      const pattern = /^[A-Z]{2}\d{3,5}[A-Z]{2}$/;
+      const valid = pattern.test(value);
+  
+      return valid ? null : { registarskaOznakaInvalid: true };
+    };
   }
 }

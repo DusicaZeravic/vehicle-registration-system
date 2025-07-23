@@ -35,7 +35,7 @@ export class RegistrationComponent {
     password: ['', Validators.required],
   });
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.loginForm.invalid) return;
 
     const data = {
@@ -54,7 +54,7 @@ export class RegistrationComponent {
     });
   }
 
-  get login(): any {
+  get login() {
     return this.loginForm.controls;
   }
 }

@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../../core/services/auth.service';
 import { MessageService } from '../../../core/services/message.service';
 import { UserService } from '../../../core/services/user.service';
+import { User } from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-user-change-password',
@@ -24,7 +25,7 @@ import { UserService } from '../../../core/services/user.service';
 
 export class ChangePasswordComponent {
   passwordForm: FormGroup
-  currentUser: any;
+  currentUser: User;
 
   constructor(private fb: FormBuilder,
               private authService: AuthService,

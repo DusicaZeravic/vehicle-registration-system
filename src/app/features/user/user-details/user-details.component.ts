@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { User } from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-user-details',
@@ -21,7 +22,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 
 export class UserDetailsComponent {
-  currentUser: any;
+  currentUser: User;
   userForm: FormGroup;
 
   constructor(private userService: UserService,
@@ -29,8 +30,8 @@ export class UserDetailsComponent {
   ) {}
   ngOnInit(): void {
     this.userForm = this.fb.group({
-      username: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      username: [{ value: '', disabled: true }, Validators.required],
+      email: [{ value: '', disabled: true }, [Validators.required, Validators.email]],
     });
 
     this.currentUser = JSON.parse(this.userService.getCurrentUser());

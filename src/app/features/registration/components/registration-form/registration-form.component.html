@@ -21,23 +21,21 @@
   </mat-form-field>
 
   <mat-form-field appearance="outline">
-    <mat-label>Cijena registracije</mat-label>
-    <input type="text" matInput formControlName="cijenaRegistracije" mask="separator.2" thousandSeparator=" " decimalSeparator="." />
-  </mat-form-field>
-
-  <mat-form-field appearance="outline">
     <mat-label>Registarska oznaka</mat-label>
     <input type="text" matInput formControlName="registarskaOznaka" />
+    <mat-error *ngIf="registrationForm.get('registarskaOznaka')?.hasError('registarskaOznakaInvalid')">
+      Oznaka mora biti u formatu 'DE8976OP'.
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field appearance="outline">
     <mat-label>Odaberi osiguranje</mat-label>
-    <mat-select formControlName="osiguranjeIds">
+    <mat-select formControlName="osiguranjeId">
       <mat-option *ngFor="let insurance of insurances" [value]="insurance.id">
         {{ insurance.naziv }}
       </mat-option>
     </mat-select>
-  </mat-form-field>  
+  </mat-form-field>
 
   <mat-slide-toggle formControlName="privremenaRegistracija">
     Privremena registracija

@@ -9,6 +9,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { CommonModule } from "@angular/common";
 import { VehicleService } from "../../../../core/services/vehicle.service";
 import { MessageService } from '../../../../core/services/message.service';
+import { Vehicle } from '../../../../core/models/vehicle.model';
 
 @Component({
   selector: "app-vehicle-form",
@@ -25,7 +26,7 @@ import { MessageService } from '../../../../core/services/message.service';
   templateUrl: "./vehicle-form.component.html",
 })
 export class VehicleFormComponent {
-  @Input() vehicle: any;
+  @Input() vehicle: Vehicle;
   @Input() vehicleId: string;
   vehicleForm: FormGroup;
   vehicleTypes: Array<{ id: string; naziv: string; kategorija: string }> = []; // change type
