@@ -14,6 +14,7 @@ import { EmptyListComponent } from '../../../shared/components/empty-list/empty-
 import { SearchComponent } from '../../../shared/components/search/search.component';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 import { Client } from '../../../core/models/client.model';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   imports: [
@@ -51,6 +52,7 @@ export class ClientListComponent {
 
   constructor(private clientService: ClientService,
               private messageService: MessageService,
+              public userService: UserService,
               private router: Router
   ) {}
 

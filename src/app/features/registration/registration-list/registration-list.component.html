@@ -94,6 +94,7 @@
                     class="pointer"
                     aria-hidden="false"
                     fontIcon="delete"
+                    *ngIf="userService.isAdmin()"
                     (click)="onDeleteRegistration(registration)"
                     >delete</mat-icon
                   >

@@ -14,6 +14,7 @@ import { EmptyListComponent } from '../../../shared/components/empty-list/empty-
 import { SearchComponent } from '../../../shared/components/search/search.component';
 import { PaginationComponent } from '../../../shared/components/pagination/pagination.component';
 import { Registration } from '../../../core/models/registration.model';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-registration-list',
@@ -51,6 +52,7 @@ export class RegistrationListComponent {
 
   constructor(private registrationService: RegistrationService,
               private messageService: MessageService,
+              public userService: UserService,
               private router: Router
   ) {}
 

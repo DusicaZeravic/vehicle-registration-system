@@ -1,0 +1,35 @@
+<app-header></app-header>
+<div style="display: flex; justify-content: center; margin: 40px 0">
+  <mat-card class="card">
+    <mat-card-header class="card-header">
+      <mat-card-title class="card-header-title">Dodajte korisnika</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="card-body">
+      <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Ime</mat-label>
+          <input matInput formControlName="username" type="text" required />
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Mejl adresa</mat-label>
+          <input matInput formControlName="email" type="email" required />
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Lozinka</mat-label>
+          <input matInput formControlName="password" type="password" required />
+        </mat-form-field>
+  
+        <mat-slide-toggle style="margin-bottom: 30px;" formControlName="isAdmin">
+          Admin
+        </mat-slide-toggle>
+      </form>
+      <div style="display: flex; justify-content: center; margin-bottom: 40px">
+        <button mat-flat-button color="primary" type="submit" [disabled]="registerForm.invalid">
+          Potvrdite
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -47,7 +47,7 @@ export class LoginComponent {
     };
 
     this.authService.login(data).subscribe({
-      next: () => {
+      next: (res) => {
         this.router.navigate(['/vehicle/list']);
       },
       error: (err) => {

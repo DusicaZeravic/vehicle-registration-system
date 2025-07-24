@@ -27,7 +27,7 @@
               <td mat-cell *matCellDef="let insurance">
                 <div style="display: flex; align-items: center; justify-content: space-evenly;">
                   <mat-icon class="pointer" style="margin-right: 10px" aria-hidden="false" fontIcon="edit" (click)="onEditInsurance(insurance)">edit</mat-icon>
-                  <mat-icon class="pointer" aria-hidden="false" fontIcon="delete" (click)="onDeleteInsurance(insurance)">delete</mat-icon>
+                  <mat-icon class="pointer" aria-hidden="false" fontIcon="delete" *ngIf="userService.isAdmin()" (click)="onDeleteInsurance(insurance)">delete</mat-icon>
                 </div>
               </td>
             </ng-container>

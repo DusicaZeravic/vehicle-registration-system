@@ -89,6 +89,7 @@
                     class="pointer"
                     aria-hidden="false"
                     fontIcon="delete"
+                    *ngIf="userService.isAdmin()"
                     (click)="onDeleteClient(client)"
                     >delete</mat-icon
                   >

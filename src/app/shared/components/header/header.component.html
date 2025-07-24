@@ -14,6 +14,10 @@
       <mat-icon>person</mat-icon>
       <span>Moj profil</span>
     </button>
+    <button mat-menu-item *ngIf="userService.isAdmin()" [routerLink]="'/auth/register'">
+      <mat-icon>person_add</mat-icon>
+      <span>Dodaj korisnika</span>
+    </button>
     <button mat-menu-item (click)="logout()">
       <mat-icon>logout</mat-icon>
       <span>Odjavite se</span>

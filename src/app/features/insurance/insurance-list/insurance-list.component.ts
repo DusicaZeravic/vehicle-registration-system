@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
 import { EmptyListComponent } from '../../../shared/components/empty-list/empty-list.component';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-insurance-list',
@@ -36,6 +37,7 @@ export class InsuranceListComponent {
 
   constructor(private insuranceService: InsuranceService,
               private messageService: MessageService,
+              public userService: UserService,
               private router: Router
   ) {}
 

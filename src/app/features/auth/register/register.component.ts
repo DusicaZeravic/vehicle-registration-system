@@ -8,10 +8,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MessageService } from '../../../core/services/message.service';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { HeaderComponent } from '../../../shared/components/header/header.component';
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
+  selector: 'app-register',
+  templateUrl: './register.component.html',
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -20,28 +22,32 @@ import { MessageService } from '../../../core/services/message.service';
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatSlideToggle,
+    HeaderComponent
   ],
 })
-export class RegistrationComponent {
+export class RegisterComponent {
   constructor(private fb: FormBuilder,
     private authService: AuthService,
     private messageService: MessageService,
     private router: Router
   ) {}
 
-  loginForm = this.fb.group({
+  registerForm = this.fb.group({
     username: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required],
+    isAdmin: [false, Validators.required],
   });
 
   onSubmit(): void {
-    if (this.loginForm.invalid) return;
+    if (this.registerForm.invalid) return;
 
     const data = {
-      username: this.loginForm.value.username || '',
-      email: this.loginForm.value.email || '',
-      password: this.loginForm.value.password || '',
+      username: this.registerForm.value.username || '',
+      email: this.registerForm.value.email || '',
+      password: this.registerForm.value.password || '',
+      isAdmin: this.registerForm.value.isAdmin ? ['Admin', 'Zaposleni'] : ['Zaposleni']
     };
 
     this.authService.register(data).subscribe({
@@ -54,7 +60,7 @@ export class RegistrationComponent {
     });
   }
 
-  get login() {
-    return this.loginForm.controls;
+  get register() {
+    return this.registerForm.controls;
   }
 }
