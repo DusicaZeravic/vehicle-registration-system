@@ -47,12 +47,13 @@ export class RegisterComponent {
       username: this.registerForm.value.username || '',
       email: this.registerForm.value.email || '',
       password: this.registerForm.value.password || '',
-      isAdmin: this.registerForm.value.isAdmin ? ['Admin', 'Zaposleni'] : ['Zaposleni']
+      roles: this.registerForm.value.isAdmin ? ['Admin', 'Zaposleni'] : ['Zaposleni']
     };
 
     this.authService.register(data).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        this.messageService.success('Uspješno ste registrovali novog korisnika');
+        this.registerForm.reset();
       },
       error: (err) => {
         this.messageService.error(err);

@@ -5,7 +5,7 @@
       <mat-card-title class="card-header-title">Dodajte korisnika</mat-card-title>
     </mat-card-header>
     <mat-card-content class="card-body">
-      <form class="form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <form class="form" [formGroup]="registerForm">
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Ime</mat-label>
           <input matInput formControlName="username" type="text" required />
@@ -26,7 +26,7 @@
         </mat-slide-toggle>
       </form>
       <div style="display: flex; justify-content: center; margin-bottom: 40px">
-        <button mat-flat-button color="primary" type="submit" [disabled]="registerForm.invalid">
+        <button mat-flat-button color="primary" type="button" (click)="onSubmit()" [disabled]="registerForm.invalid">
           Potvrdite
         </button>
       </div>
